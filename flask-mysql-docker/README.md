@@ -7,5 +7,5 @@ Based on this Medium article [tutorial](https://medium.com/@shamir.stav_83310/do
 ### Installation
 
 1. Verify that Docker and composer have been installed
-2. Clone this repository, then run `docker compose-up`
+2. Clone this repository, then run `./run_docker.sh`
 3. App will open on port 5000, so visit it in the browser
