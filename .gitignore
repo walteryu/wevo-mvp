@@ -1,2 +1,6 @@
+.DS_Store
+check_repo.sh
+git_stage.sh
+
 /venv/
 __pycache__/
