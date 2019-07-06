@@ -8,7 +8,6 @@ import json
 
 app = Flask(__name__)
 
-
 @app.route('/')
 def index():
     feature = 'Bar'
