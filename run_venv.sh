@@ -1,13 +1,15 @@
 #!/bin/bash
 
-# Create and run venv and requirements.txt
+# initiate venv instance:
 virtualenv venv --python=`which python3`
 source venv/bin/activate
-# pip install Flask bokeh
-# mkdir templates
-# touch app.py
+
+# list list dep in requirements.txt:
+pip install -r requirements.txt
+
+# add application path:
 export FLASK_APP=app.py
 export FLASK_DEBUG=1
 
-pip install -r requirements.txt
+# run application; it should open on port 5000:
 flask run
