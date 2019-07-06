@@ -30,25 +30,7 @@ def votes() -> List[Dict]:
 
     return results
 
-@app.route('/')
-def index() -> str:
-    return json.dumps({'votes': votes()})
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0')
-
-# Dashboard with bokeh and AJAX:
-# https://github.com/davidhamann/bokeh-ajax-tutorial
-@app.route('/dashboard/')
-def show_dashboard():
-    plots = []
-    plots.append(make_ajax_plot())
-    plots.append(make_plot())
-
-    return render_template('dashboard.html', plots=plots)
-
-x = 0
-@app.route('/data/', methods=['POST'])
+# Experiment with routing:
 def data():
     global x
     x += 1
@@ -77,3 +59,17 @@ def make_ajax_plot():
 
     script, div = components(plot)
     return script, div
+
+@app.route('/')
+def index() -> str:
+    # return json.dumps({'votes': votes()})
+
+    # Experiment with routing:
+    plots = []
+    plots.append(make_ajax_plot())
+    plots.append(make_plot())
+
+    return render_template('dashboard.html', plots=plots)
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0')
