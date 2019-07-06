@@ -16,7 +16,9 @@ def votes() -> List[Dict]:
     connection = mysql.connector.connect(**config)
     cursor = connection.cursor()
     cursor.execute('SELECT * FROM votes')
-    results = [{project: vote} for (project, vote, comments) in cursor]
+    results = [
+        {project_name: vote} for (project_name, vote, vote_date, lat, lng, comments) in cursor
+    ]
     cursor.close()
     connection.close()
 
