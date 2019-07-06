@@ -4,12 +4,7 @@
 
 ## Summary
 
-Initial MVP with Docker app with Flask and MySQL.
-
-### Citations
-
-* Medium article [tutorial](https://medium.com/@shamir.stav_83310/dockerizing-a-flask-mysql-app-with-docker-compose-c4f51d20b40d)
-* Github [repository](https://github.com/stavshamir/docker-tutorial)
+Initial MVP with Docker app with Flask and MySQL; it will be developed into the full MVP based on customer interviews with additional features. User authentication, CRUD operations, voting feature and data visualization will be added soon.
 
 ### Installation
 
@@ -58,3 +53,10 @@ Initial MVP with Docker app with Flask and MySQL.
 * 4.3. Run `docker-compose up -d --no-dep --build` to rebuild
 * 4.4. Finally, re-run `docker-compose up` to re-run image
 * 4.5. All commands are stored in `run_docker.sh` script
+
+### Citations
+
+The Docker app is based on the tutorial and repository below:
+
+* Medium article [tutorial](https://medium.com/@shamir.stav_83310/dockerizing-a-flask-mysql-app-with-docker-compose-c4f51d20b40d)
+* Github [repository](https://github.com/stavshamir/docker-tutorial)

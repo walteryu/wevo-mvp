@@ -6,10 +6,6 @@
 
 WeVo is a civic engagement platform designed to help land development and building project stakeholders incorporate community feedback into their projects, reduce paper consumption, conserve resources by managing project risk, analyze public sentiment and predict community response.
 
-### Background
-
-This project started at [Startup Weekend Sacramento](http://communities.techstars.com/usa/sacramento/startup-weekend/14400) in June 2019 with the goal of increasing civic engagement, reducing project risk and helping build more inclusive cities.
-
 ### Objectives
 
 The project objectives are as follows:
@@ -17,6 +13,10 @@ The project objectives are as follows:
 1. Reduce project risk by minimizing project delays and lawsuits
 2. Allow constituents to vote on projects and initiatives
 3. Allow project owners to track voting and sentiment
+
+### Background
+
+This project started at [Startup Weekend Sacramento](http://communities.techstars.com/usa/sacramento/startup-weekend/14400) in June 2019 with the goal of increasing civic engagement, reducing project risk and helping build more inclusive cities.
 
 ### Methodology
 
