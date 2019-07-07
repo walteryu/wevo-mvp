@@ -3,8 +3,10 @@ plotly
 pandas
 numpy
 gunicorn
+sqlite3
 
 flask_script
 flask_migrate
 flask_sqlalchemy
 psycopg2-binary
+Flask-Seeder
