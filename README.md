@@ -53,5 +53,10 @@ Initial MVP app with Flask and Plotly; it will be developed into the full MVP ba
 
 MVP is based on the links below:
 
+Data Dashboard with Plotly:
 * Hepta Analytics [Tutorial](https://blog.heptanalytics.com/2018/08/07/flask-plotly-dashboard/)
 * Hepta Analytics [Github Repo](https://github.com/yvonnegitau/flask-Dashboard)
+
+Postgres, Data Model and Migrations:
+* Medium Article [Tutorial](https://medium.com/@dushan14/create-a-web-application-with-python-flask-postgresql-and-deploy-on-heroku-243d548335cc)
+* Tutorial [Github Repo](https://github.com/dushan14/books-store)
