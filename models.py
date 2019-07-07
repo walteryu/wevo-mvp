@@ -1,25 +1,28 @@
 from app import db
 
-class Book(db.Model):
-    __tablename__ = 'books'
+class Project(db.Model):
+    __tablename__ = 'projects'
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String())
-    author = db.Column(db.String())
-    published = db.Column(db.String())
+    description = db.Column(db.String())
+    lat = db.Column(db.Numeric(10,4))
+    lng = db.Column(db.Numeric(10,4))
 
-    def __init__(self, name, author, published):
+    def __init__(self, name, description, lat, lng):
         self.name = name
-        self.author = author
-        self.published = published
+        self.description = description
+        self.lat = lat
+        self.lng = lng
 
     def __repr__(self):
         return '<id {}>'.format(self.id)
 
     def serialize(self):
         return {
-            'id': self.id, 
+            'id': self.id,
             'name': self.name,
-            'author': self.author,
-            'published':self.published
+            'description': self.description,
+            'lat':self.lat,
+            'lng':self.lng
         }
