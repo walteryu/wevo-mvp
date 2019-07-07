@@ -1,6 +1,7 @@
 import os
 from flask import Flask, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
+from flask_seeder import FlaskSeeder
 
 # from flask import Flask, render_template, request
 import plotly
@@ -20,6 +21,10 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 
 db = SQLAlchemy(app)
+db.init_app(app)
+
+seeder = FlaskSeeder()
+seeder.init_app(app, db)
 
 # import db schema
 from models import Project
@@ -123,8 +128,9 @@ def get_by_id(id_):
 def add_project_form():
     if request.method == 'POST':
         name=request.form.get('name')
-        author=request.form.get('author')
-        published=request.form.get('published')
+        description=request.form.get('description')
+        lat=request.form.get('lat')
+        lng=request.form.get('lng')
         try:
             project=Project(
                 name=name,
@@ -134,7 +140,7 @@ def add_project_form():
             )
             db.session.add(project)
             db.session.commit()
-            return "Project added. project id={}".format(project.id)
+            return "Project added! project id={}".format(project.id)
         except Exception as e:
             return(str(e))
     return render_template("getdata.html")
