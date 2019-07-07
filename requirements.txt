@@ -3,3 +3,8 @@ plotly
 pandas
 numpy
 gunicorn
+
+flask_script
+flask_migrate
+flask_sqlalchemy
+psycopg2-binary
