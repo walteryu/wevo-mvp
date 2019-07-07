@@ -4,5 +4,6 @@ settings.py
 git_stage.sh
 check_repo.sh
 
+app.db
 /venv/
 __pycache__/
