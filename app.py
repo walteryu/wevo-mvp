@@ -13,8 +13,12 @@ import json
 app = Flask(__name__)
 
 # import app and db settings
-app.config.from_object(os.environ['APP_SETTINGS'])
+# app.config.from_object(os.environ['APP_SETTINGS'])
+app.config.from_object('config')
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+
 db = SQLAlchemy(app)
 
 # import db schema
