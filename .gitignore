@@ -1,7 +1,8 @@
 .env
 .DS_Store
-check_repo.sh
+settings.py
 git_stage.sh
+check_repo.sh
 
 /venv/
 __pycache__/
