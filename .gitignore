@@ -6,5 +6,6 @@ check_repo.sh
 
 app.db
 /venv/
+/seeds/
 __pycache__/
 /scripts/heroku_notes.sh
