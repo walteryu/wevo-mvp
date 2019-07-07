@@ -1,3 +1,4 @@
+.env
 .DS_Store
 check_repo.sh
 git_stage.sh
