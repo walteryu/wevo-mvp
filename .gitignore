@@ -7,3 +7,4 @@ check_repo.sh
 app.db
 /venv/
 __pycache__/
+run_heroku.sh
