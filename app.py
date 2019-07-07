@@ -1,4 +1,8 @@
-from flask import Flask, render_template,request
+import os
+from flask import Flask, request, jsonify, render_template
+from flask_sqlalchemy import SQLAlchemy
+
+# from flask import Flask, render_template, request
 import plotly
 import plotly.graph_objs as go
 
@@ -8,6 +12,15 @@ import json
 
 app = Flask(__name__)
 
+# import app and db settings
+app.config.from_object(os.environ['APP_SETTINGS'])
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+# import db schema
+from models import Project
+
+# homepage dashboard route
 @app.route('/')
 def index():
     feature = 'Bar'
@@ -42,6 +55,7 @@ def create_plot(feature):
 
     return graphJSON
 
+# homepage dashboard route
 @app.route('/bar', methods=['GET', 'POST'])
 def change_features():
 
@@ -49,6 +63,77 @@ def change_features():
     graphJSON= create_plot(feature)
 
     return graphJSON
+
+# CRUD route
+@app.route("/name/<name>")
+def get_project_name(name):
+    return "name : {}".format(name)
+
+# CRUD route
+@app.route("/details")
+def get_project_details():
+    description=request.args.get('description')
+    lat=request.args.get('lat')
+    lng=request.args.get('lng')
+    return "Description: {}, Lat: {}, Lng: {}".format(description, lat, lng)
+
+# CRUD route
+def add_project():
+    name=request.args.get('name')
+    description=request.args.get('description')
+    lat=request.args.get('lat')
+    lng=request.args.get('lng')
+    try:
+        project=Project(
+            name=name,
+            description=description,
+            lat=lat,
+            lng=lng
+        )
+        db.session.add(project)
+        db.session.commit()
+        return "Project added. project id={}".format(project.id)
+    except Exception as e:
+	    return(str(e))
+
+# CRUD route
+@app.route("/getall")
+def get_all():
+    try:
+        projects=Project.query.all()
+        return  jsonify([e.serialize() for e in projects])
+    except Exception as e:
+	    return(str(e))
+
+# CRUD route
+@app.route("/get/<id_>")
+def get_by_id(id_):
+    try:
+        project=Project.query.filter_by(id=id_).first()
+        return jsonify(project.serialize())
+    except Exception as e:
+	    return(str(e))
+
+# CRUD route
+@app.route("/add/form",methods=['GET', 'POST'])
+def add_project_form():
+    if request.method == 'POST':
+        name=request.form.get('name')
+        author=request.form.get('author')
+        published=request.form.get('published')
+        try:
+            project=Project(
+                name=name,
+                description=description,
+                lat=lat,
+                lng=lng
+            )
+            db.session.add(project)
+            db.session.commit()
+            return "Project added. project id={}".format(project.id)
+        except Exception as e:
+            return(str(e))
+    return render_template("getdata.html")
 
 if __name__ == '__main__':
     app.run()
