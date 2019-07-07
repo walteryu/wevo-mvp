@@ -1,5 +1,5 @@
 from app import db
-from manage import db,app
+from manage import db, app
 
 class Project(db.Model):
     __tablename__ = 'projects'
