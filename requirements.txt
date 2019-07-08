@@ -3,7 +3,6 @@ plotly
 pandas
 numpy
 gunicorn
-sqlite3
 
 flask_script
 flask_migrate
