@@ -8,4 +8,6 @@ flask_script
 flask_migrate
 flask_sqlalchemy
 psycopg2-binary
+
 Flask-Seeder
+pytest
