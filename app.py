@@ -67,10 +67,8 @@ def create_plot(feature):
 # homepage dashboard route
 @app.route('/bar', methods=['GET', 'POST'])
 def change_features():
-
     feature = request.args['selected']
     graphJSON= create_plot(feature)
-
     return graphJSON
 
 # CRUD route
@@ -106,11 +104,11 @@ def add_project():
 	    return(str(e))
 
 # CRUD route
-@app.route("/getall")
-def get_all():
+@app.route("/get/projects")
+def get_projects():
     try:
         projects=Project.query.all()
-        return  jsonify([e.serialize() for e in projects])
+        return jsonify([e.serialize() for e in projects])
     except Exception as e:
 	    return(str(e))
 
@@ -124,7 +122,7 @@ def get_by_id(id_):
 	    return(str(e))
 
 # CRUD route
-@app.route("/add/form",methods=['GET', 'POST'])
+@app.route("/project/new",methods=['GET', 'POST'])
 def add_project_form():
     if request.method == 'POST':
         name=request.form.get('name')
@@ -143,7 +141,7 @@ def add_project_form():
             return "Project added! project id={}".format(project.id)
         except Exception as e:
             return(str(e))
-    return render_template("getdata.html")
+    return render_template("project_new.html")
 
 if __name__ == '__main__':
     app.run()
