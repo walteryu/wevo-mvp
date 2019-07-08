@@ -3,10 +3,9 @@ from flask import Flask, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_seeder import FlaskSeeder
 
-# from flask import Flask, render_template, request
+# dashboard plotting packages
 import plotly
 import plotly.graph_objs as go
-
 import pandas as pd
 import numpy as np
 import json
@@ -23,6 +22,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 db = SQLAlchemy(app)
 db.init_app(app)
 
+# TODO: seed database...
 seeder = FlaskSeeder()
 seeder.init_app(app, db)
 
@@ -61,7 +61,6 @@ def create_plot(feature):
         )]
 
     graphJSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
-
     return graphJSON
 
 # homepage dashboard route
