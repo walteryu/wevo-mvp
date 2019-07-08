@@ -7,8 +7,12 @@ class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String())
     description = db.Column(db.String())
-    lat = db.Column(db.Numeric(10,4))
-    lng = db.Column(db.Numeric(10,4))
+
+    # TODO: run migration for lat/lng:
+    lat = db.Column(db.String())
+    lng = db.Column(db.String())
+    # lat = db.Column(db.Numeric(10,4))
+    # lng = db.Column(db.Numeric(10,4))
 
     def __init__(self, name, description, lat, lng):
         self.name = name
