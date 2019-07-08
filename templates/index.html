@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+{% extends 'layout.html' %}
+
 <html>
 <head lang="en">
     <meta charset="UTF-8">
@@ -18,7 +21,7 @@
       </div>
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
-        <li><a href="/getall">Projects</a></li>
+        <li><a href="/get/projects">Projects</a></li>
         <li><a href="#">Votes</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -29,10 +32,12 @@
   </nav>
 
   <div class="container-fluid">
-      <h4>Project Voting Results</h4>
+      {% block content %}
+      <h4>Data Dashboard: Project Voting Results</h4>
+      <h5>Description: Chart below is an example of where actual project voting data will appear.</h5>
       <div class="row">
           <div class="col-xs-3">
-              <label> Please Select Plot Type </label>
+              <label>Please Select Plot Type</label>
               <select class="form-control" id ='first_cat'>
                   <option value="Bar">Bar</option>
                   <option value="Scatter">Scatter</option>
@@ -47,6 +52,7 @@
               </div>
           </div>
       </div>
+      {% endblock %}
   </div>
   <script src="{{ url_for('static', filename='js/jquery-1.11.1.min.js') }}"></script>
   <script src="{{ url_for('static', filename='js/plots.js') }}"></script>
