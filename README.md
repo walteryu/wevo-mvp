@@ -28,35 +28,49 @@ This project was developed based on coach feedback and custom development during
 4. Project satisfies multiple portions of the sustainability model
 5. This project was developed based on the tutorial listed below
 
-## Data Dashboard with Flask and Plotly
+## Data Dashboard with Python, Flask and Plotly
 
 ### Summary
 
-Initial MVP app with Flask and Plotly; it will be developed into the full MVP based on customer interviews with additional features. User authentication, CRUD operations, voting feature and data visualization will be added soon.
+Initial MVP app with Pythong, Flask and Plotly; it will be developed into the full MVP based on customer interviews with additional features. User authentication, CRUD operations, voting feature and data visualization will be added soon.
 
-### Local Installation
+### Local Development
 
-1. Verify that Python and Pip have been installed
-2. After installations, git clone this repository
-3. From within the root directory, run commands within `./run_venv.sh`
-4. Commands will create and start virtualvenv instance
-* 4.1. Next, install packages within requirements.txt
-* 4.2. Once installed, then start app with `flask run`
+1. Verify that Python and Pip (package manager) have been installed
+* 1.1. Production runs on Python 3; however, either v2 or 3 works in dev mode
+2. After verifying installations, git clone this repository
+* 1.2. Repository contains dev branch for collaboration
+3. From within the root directory, run commands within `scripts/venv_notes.sh`
+* 3.1. File has instructions for creating virtual environment for packages
+* 3.2. Instructions will download required packages and start local server
+4. Local database currently is SQLite, and deployment database is Postgres
+* 4.1. Database settings identified within config.py file
+* 4.2. Models.py file contain data schema; manage.py contains migration info
+* 4.3. Create migration files with `python manage.py db init`
+* 4.4. Move migration files with `python manage.py db migrate`
+* 4.5. Execute migration files with `python manage.py db upgrade`
 
 ### Heroku Deployment
 
 1. Procfile, requirements.txt and runtime.txt files provide necessary info
-2. Verify that Heroku toolbelt is installed, then add Github repo to application
+* 1.1. Procfile creates 1 web worker with gunicorn
+* 1.2. Python 3 is specified in runtime.txt file
+2. Verify that Heroku toolbelt is installed, then add Heroku as remote
+* 2.1. Verify that all changes are committed and stored on the master branch
+* 2.2. Check that config vars have been set and app created in Heroku dashboard
 3. Next, deploy using `git push heroku master` once repo has been linked
 
 ### Citations
 
-MVP is based on the links below:
+MVP is based on the tutorials and links below:
+
+Flask, Postgres and Heroku:
+* MVP closely follows this [tutorial](https://medium.com/@dushan14/create-a-web-application-with-python-flask-postgresql-and-deploy-on-heroku-243d548335cc)
+* Tutorial [Github Repo](https://github.com/dushan14/books-store)
+* Real Python [tutorial](https://realpython.com/flask-by-example-part-1-project-setup/) which has more complex features but first several sections are useful
+* Flask [documentation](http://flask.pocoo.org/docs/1.0/patterns/#patterns) which has design patterns for common tasks such as database, MVC and template design
 
 Data Dashboard with Plotly:
 * Hepta Analytics [Tutorial](https://blog.heptanalytics.com/2018/08/07/flask-plotly-dashboard/)
 * Hepta Analytics [Github Repo](https://github.com/yvonnegitau/flask-Dashboard)
-
-Postgres, Data Model and Migrations:
-* Medium Article [Tutorial](https://medium.com/@dushan14/create-a-web-application-with-python-flask-postgresql-and-deploy-on-heroku-243d548335cc)
-* Tutorial [Github Repo](https://github.com/dushan14/books-store)
+* Plotly [website](https://plot.ly/products/dash/) with additional documentation
