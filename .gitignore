@@ -8,4 +8,5 @@ app.db
 /venv/
 /seeds/
 __pycache__/
+/tests/__pycache__/
 /scripts/heroku_notes.sh
