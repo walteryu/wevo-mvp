@@ -1,4 +1,4 @@
-# WeVo Platform - MVP
+# WeVo Platform - MVP test
 
 ## We build more inclusive cities with data and analytics.
 
