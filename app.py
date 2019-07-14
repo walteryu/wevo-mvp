@@ -1,7 +1,6 @@
 import os
 from flask import Flask, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
-from flask_seeder import FlaskSeeder
 
 # dashboard plotting packages
 import plotly
@@ -21,10 +20,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 
 db = SQLAlchemy(app)
 db.init_app(app)
-
-# TODO: seed database...
-seeder = FlaskSeeder()
-seeder.init_app(app, db)
 
 # import db schema
 from models import Project
