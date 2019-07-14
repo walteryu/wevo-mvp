@@ -142,5 +142,13 @@ def add_project_form():
             return(str(e))
     return render_template("project_new.html")
 
+# get all projects and send to html
+@app.route('/projects')
+def projects():
+    projects = Project.query.all()
+    return render_template("projects.html",
+                           title="Projects",
+                           projects=projects)
+
 if __name__ == '__main__':
     app.run()
