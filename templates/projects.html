@@ -2,28 +2,33 @@
 
 {% block content %}
 
-<title>All Projects</title>
-
 <h3>All Projects</h3>
-         <div class="row">
-            <div class="large-4 small-12 columns">
-                <div class="hide-for-small panel">
-                </div>
-            </div>
 
-            <div class="large-8 columns">
-               <div class="row container1">
-                   {% for project in projects %}
-                       <div class="large-4 small-4 columns">
-                           <ul class="pricing-table">
-                               {% if project.name %}<li class="title">{{project.name}}</li>{% endif %}
-                               {% if product.description %}<li class="description">${{
-project.description}}</li>{% endif %}
-                           </ul>
-                       </div>
-                   {% endfor %}
+  <a href="project/new" class="btn btn-primary" role="button">New Project</a>
+  <br></br>
+
+  <div class="row">
+    <div class="large-8 columns">
+       <div class="row container1">
+           {% for project in projects %}
+               <div class="large-4 small-4 columns">
+                   <ul>
+                       <li>
+                       {% if project.name %}
+                           Name: {{project.name}}
+                           <p>
+                       {% endif %}
+
+                       {% if project.description %}
+                           Description: {{project.description}}
+                           <p>
+                       {% endif %}
+                       </li>
+                   </ul>
                </div>
-            </div>
-         </div>
+           {% endfor %}
+       </div>
+    </div>
+ </div>
 
 {% endblock %}
