@@ -1,6 +1,11 @@
 #!/bin/bash
 
 # run migrations locally
-# python manage.py db init
-python manage.py db migrate
-python manage.py db upgrade
+# python3 manage.py db init
+
+# indicate current state
+# python3 manage.py db stamp heads
+
+# migrate and upgrade db
+python3 manage.py db migrate
+python3 manage.py db upgrade
