@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # run server locally from manage.py:
-python manage.py runserver
+python3 ../manage.py runserver
