@@ -6,6 +6,5 @@ check_repo.sh
 
 app.db
 /venv/
-/seeds/
 __pycache__/
 /tests/__pycache__/

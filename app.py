@@ -1,7 +1,6 @@
 import os
 from flask import Flask, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
-from flask_seeder import FlaskSeeder
 
 # dashboard plotting packages
 import plotly
@@ -21,10 +20,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 
 db = SQLAlchemy(app)
 db.init_app(app)
-
-# TODO: seed database...
-seeder = FlaskSeeder()
-seeder.init_app(app, db)
 
 # import db schema
 from models import Project
@@ -70,20 +65,34 @@ def change_features():
     graphJSON= create_plot(feature)
     return graphJSON
 
-# CRUD route
-@app.route("/name/<name>")
-def get_project_name(name):
-    return "name : {}".format(name)
-
-# CRUD route
+# project crud/api route
 @app.route("/details")
 def get_project_details():
+    name=request.args.get('name')
     description=request.args.get('description')
     lat=request.args.get('lat')
     lng=request.args.get('lng')
     return "Description: {}, Lat: {}, Lng: {}".format(description, lat, lng)
 
-# CRUD route
+# project crud/api route
+@app.route("/get/projects")
+def get_projects():
+    try:
+        projects=Project.query.all()
+        return jsonify([e.serialize() for e in projects])
+    except Exception as e:
+	    return(str(e))
+
+# project crud/api route
+@app.route("/get/<id_>")
+def get_by_id(id_):
+    try:
+        project=Project.query.filter_by(id=id_).first()
+        return jsonify(project.serialize())
+    except Exception as e:
+	    return(str(e))
+
+# project crud method
 def add_project():
     name=request.args.get('name')
     description=request.args.get('description')
@@ -102,25 +111,7 @@ def add_project():
     except Exception as e:
 	    return(str(e))
 
-# CRUD route
-@app.route("/get/projects")
-def get_projects():
-    try:
-        projects=Project.query.all()
-        return jsonify([e.serialize() for e in projects])
-    except Exception as e:
-	    return(str(e))
-
-# CRUD route
-@app.route("/get/<id_>")
-def get_by_id(id_):
-    try:
-        project=Project.query.filter_by(id=id_).first()
-        return jsonify(project.serialize())
-    except Exception as e:
-	    return(str(e))
-
-# CRUD route
+# project crud route
 @app.route("/project/new",methods=['GET', 'POST'])
 def add_project_form():
     if request.method == 'POST':
@@ -142,7 +133,7 @@ def add_project_form():
             return(str(e))
     return render_template("project_new.html")
 
-# get all projects and send to html
+# project crud route
 @app.route('/projects')
 def projects():
     projects = Project.query.all()
