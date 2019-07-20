@@ -9,7 +9,6 @@ from manage import db, app
 
 # nested resource for project/votes
 # ref: https://stackoverflow.com/questions/50594051/patching-resources-with-nested-objects-with-flask-sqlalchemy
-
 class Project(db.Model):
     __tablename__ = 'projects'
 
@@ -42,7 +41,6 @@ class Project(db.Model):
 
 # nested resource for project/votes
 # ref: https://stackoverflow.com/questions/50594051/patching-resources-with-nested-objects-with-flask-sqlalchemy
-
 class Vote(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     result = db.Column(db.Boolean, default=False, nullable=False)
