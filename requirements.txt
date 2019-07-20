@@ -7,5 +7,6 @@ gunicorn
 flask_script
 flask_migrate
 flask_sqlalchemy
+flask-restless
 psycopg2-binary
 pytest
