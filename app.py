@@ -169,6 +169,7 @@ def add_project_form():
 #                            title="Projects",
 #                            projects=projects)
 
+from flask.ext.restful import Resource, request, reqparse
 from flask import render_template, make_response
 class ProjectController(Resource):
     def __init__(self):
