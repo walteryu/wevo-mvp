@@ -1,6 +1,17 @@
 from app import db
 from manage import db, app
 
+# use flask-restless to build api and nest endpoints
+# https://thelaziestprogrammer.com/sharrington/web-development/sqlalchemy-defined-rest-api
+from sqlalchemy.ext.declarative\
+  import declarative_base, declared_attr
+from sqlalchemy\
+  import ForeignKey, Column, Integer, String, Boolean
+from sqlalchemy.orm\
+  import backref, relationship
+
+from wevo-mvp import Base
+
 # model/schema notes:
 # 1. declare both here in app.py file
 # 2. flask will generate migration files based on logic here
