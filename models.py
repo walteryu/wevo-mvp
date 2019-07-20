@@ -7,7 +7,7 @@ from sqlalchemy\
 from sqlalchemy.orm\
   import backref, relationship
 
-from models import Base
+from app import Base
 
 # model/schema notes:
 # 1. declare both here in app.py file
