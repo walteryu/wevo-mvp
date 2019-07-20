@@ -8,5 +8,6 @@ flask_script
 flask_migrate
 flask_sqlalchemy
 flask-restless
+flask-restful
 psycopg2-binary
 pytest
