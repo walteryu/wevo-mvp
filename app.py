@@ -9,6 +9,13 @@ import pandas as pd
 import numpy as np
 import json
 
+# use flask-restless to build api and nest endpoints
+# https://thelaziestprogrammer.com/sharrington/web-development/sqlalchemy-defined-rest-api
+import flask_restless
+from sqlalchemy.ext.declarative import declarative_base, declared_attr
+from sqlalchemy.orm import sessionmaker, scoped_session
+from sqlalchemy import *
+
 app = Flask(__name__)
 
 # import app and db settings
@@ -18,12 +25,32 @@ app.config.from_object(os.environ['APP_SETTINGS'])
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 
-db = SQLAlchemy(app)
-db.init_app(app)
+# db = SQLAlchemy(app)
+# db.init_app(app)
 
 # import db schema
-from models import Project
+# from models import Project
 
+# Create our SQLAlchemy DB engine
+engine = create_engine('sqlite:///app.db')
+Session = sessionmaker(bind=engine, autocommit=False, autoflush=False)
+s = scoped_session(Session)
+
+Base = declarative_base()
+Base.metadata.bind = engine
+
+# Import all models to add them to Base.metadata
+from models import Project, Vote
+
+Base.metadata.create_all()
+
+manager = flask_restless.APIManager(app, session=s)
+# Register flask-restless blueprints to instantiate CRUD endpoints
+from controllers import project_api_blueprint, vote_api_blueprint
+app.register_blueprint(project_api_blueprint)
+app.register_blueprint(vote_api_blueprint)
+
+# original crud operations
 # homepage dashboard route
 @app.route('/')
 def index():
