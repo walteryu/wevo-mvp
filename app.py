@@ -162,21 +162,9 @@ def add_project_form():
     return render_template("project_new.html")
 
 # project crud route
-# @app.route('/projects')
-# def projects():
-#     projects = Project.query.all()
-#     return render_template("projects.html",
-#                            title="Projects",
-#                            projects=projects)
-
-from flask_restful import Resource, request, reqparse
-from flask import render_template, make_response
-class ProjectController(Resource):
-    def __init__(self):
-        pass
-    def get(self):
-        headers = {'Content-Type': 'text/html'}
-        return make_response(render_template('projects.html'),200,headers)
-
-if __name__ == '__main__':
-    app.run()
+@app.route('/projects')
+def projects():
+    projects = Project.query.all()
+    return render_template("projects.html",
+                           title="Projects",
+                           projects=projects)
